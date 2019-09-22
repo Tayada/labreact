@@ -40,18 +40,14 @@ render(){
     
     return(
         <div>
-            <h1>WORD CARD</h1>
-            <img src="apple3.png"></img>
-            <div>
               {
                     Array.from(this.state.chars).map((c, i) => <CharacterCard value={c} key={i}
                     attempt={this.state.attempt}
                     activationHandler={this.activationHandler}/>)
             }  
-            </div>
             
             <h1>Round : {this.state.attempt}</h1>
-            
+            <h2>You can play a maximum of 5 round</h2>
             <h1>{this.state.completed==!this.state.check? "YOU WON":""}</h1>
             <h1>{this.state.check? "YOU LOSE" : ""}</h1>
         </div>

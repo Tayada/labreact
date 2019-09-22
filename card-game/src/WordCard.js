@@ -5,7 +5,7 @@ const prepareStateFromWord = (given_word) => {
     let word = given_word.toUpperCase()
     let chars = _.shuffle(Array.from(word))
     return {
-        word, // hello
+        word, // apple
         chars, 
         attempt: 1,
         guess: [],
@@ -26,7 +26,13 @@ export default class WordCard extends Component{
             if(guess.join('').toString()==this.state.word){
                 this.setState({guess: [],completed: true})
             }else{
+                if(this.state.attempt == 5){
+                    this.setState({guess: [], completed: true})
+                    this.setState({guess: [],check: true})
+                }
+                else{
                 this.setState({guess:[], attempt:this.state.attempt + 1})
+                }
             }
         }
     }
@@ -34,11 +40,20 @@ render(){
     
     return(
         <div>
-            {
+            <h1>WORD CARD</h1>
+            
+            <div>
+              {
                     Array.from(this.state.chars).map((c, i) => <CharacterCard value={c} key={i}
                     attempt={this.state.attempt}
                     activationHandler={this.activationHandler}/>)
-                }
+            }  
+            </div>
+            
+            <h1>Round : {this.state.attempt}</h1>
+            
+            <h1>{this.state.completed==!this.state.check? "YOU WON":""}</h1>
+            <h1>{this.state.check? "YOU LOSE" : ""}</h1>
         </div>
     );
 }

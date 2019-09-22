@@ -7,7 +7,10 @@ if(randomnum==0){
   var word = "apple";
   var images = "apple3.png";
 }
-
+if(randomnum==1){
+  var word = "banana";
+  var images = "banana3.png";
+}
 
 class App extends Component{
   render(){

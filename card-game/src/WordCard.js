@@ -41,7 +41,7 @@ render(){
     return(
         <div>
             <h1>WORD CARD</h1>
-            
+            <img src="apple3.png"></img>
             <div>
               {
                     Array.from(this.state.chars).map((c, i) => <CharacterCard value={c} key={i}
